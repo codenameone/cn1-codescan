@@ -26,7 +26,7 @@ Use `CodeScanner.isSupported()` to find out if it is supported on the current pl
 
 ## Installation
 
-Copy [cn1-codescan.cn1lib](https://github.com/shannah/cn1-codescan/raw/master/cn1-codescan.cn1lib) into your project's "lib" directory and refresh libs.
+Copy [cn1-codescan.cn1lib](https://github.com/codenameone/cn1-codescan/raw/master/cn1-codescan.cn1lib) into your project's "lib" directory and refresh libs.
 
 ## Usage Example
 
@@ -89,7 +89,7 @@ import com.codename1.ext.codescan.ScanResult;
 ## Building From Source
 
 ~~~~
-$ git clone https://github.com/shannah/cn1-codescan.git
+$ git clone https://github.com/codenameone/cn1-codescan.git
 $ cd cn1-codescan
 $ ant -f configure.xml
 $ ant jar
