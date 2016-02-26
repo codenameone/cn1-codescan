@@ -1,6 +1,6 @@
 # Codename One CodeScanner Library
 
-This library provides code scanning (QR code and Bar code) support for Codename One.  This comprises a refactoring of the `com.codename1.codescan` package into a separate cn1lib so that only applications that require this feature need include it.  The codescan package in the core Codename One library will be deprecated in the future, and this library will be the officially supported method of code scanning in Codename One.
+This library provides code scanning (QR code and Bar code) support for [Codename One](https://www.codenameone.com/).  This comprises a refactoring of the `com.codename1.codescan` package into a separate cn1lib so that only applications that require this feature need include it.  The codescan package in the core Codename One library will be deprecated in the future, and this library will be the officially supported method of code scanning in Codename One.
 
 
 ## License
