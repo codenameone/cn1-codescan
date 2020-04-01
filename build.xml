@@ -76,8 +76,8 @@
             <fileset dir="native" includes="**"/>
         </copy>
         
-        <ant inheritall="false" antfile="dist/cn1-codescan/build.xml" target="jar" />
-        <ant inheritall="false" antfile="dist/cn1-codescan/build.xml" target="javadoc"/>
+        <ant inheritall="false" dir="dist/cn1-codescan" useNativeBaseDir="true" target="jar" />
+        <ant inheritall="false" dir="dist/cn1-codescan" useNativeBaseDir="true" target="javadoc"/>
         <copy file="dist/cn1-codescan/dist/cn1-codescan-lib-template.cn1lib" tofile="dist/cn1-codescan.cn1lib"/>
         <delete dir="javadoc"/>
         <copy todir="javadoc">
@@ -449,16 +449,30 @@
         <mkdir dir="native/javase" />
         <mkdir dir="native/internal_tmp" />
         <mkdir dir="lib/impl/native/javase" />
+        <path id="native.jars.class.path">
+            <pathelement path="${run.classpath}"/>
+             <pathelement path="${build.classes.dir}"/>
+    
+            <fileset dir="native/javase">
+              <include name="**/*.jar" />
+            </fileset>
+            <fileset dir="lib/impl/native/javase">
+              <include name="**/*.jar" />
+            </fileset>
+          </path>
         <javac destdir="native/internal_tmp"
             encoding="${source.encoding}"
-            source="1.5"
-            target="1.5"
-            bootclasspath="CLDC11.jar" excludes="${excludes}"
-            classpath="${javac.classpath}:${build.classes.dir}">
+            source="1.8"
+            target="1.8"
+            classpathref="native.jars.class.path">
             <src path="native/javase"/>
             <src path="lib/impl/native/javase"/>
-        </javac>  
-        <antcall target="cn1lib"/>       
+        </javac>
+        <copy todir="native/internal_tmp">
+            <fileset dir="native/javase" excludes="*.java,*.jar"/>
+            <fileset dir="lib/impl/native/javase" excludes="*.java,*.jar"/>
+        </copy>
+        <antcall target="cn1lib"/>          
     </target>
 
     <target name="-post-clean" depends="refresh-libs">
